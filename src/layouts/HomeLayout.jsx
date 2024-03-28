@@ -1,14 +1,15 @@
 import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import Countries from '../components/Countries'
 
-const Home = () => {
+const HomeLayout = ({children}) => {
   return (
     <div>
-      <Countries />
+        <Header />
+        {children}
+        <Footer />
     </div>
   )
 }
 
-export default Home
+export default HomeLayout
