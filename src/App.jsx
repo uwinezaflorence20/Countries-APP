@@ -16,6 +16,7 @@ const App = () => {
           </HomeLayout>
         }
         />
+        
         <Route path="/regions" element={
           <OtherLayouts>
             <Regions />
@@ -34,3 +35,4 @@ const App = () => {
 }
 
 export default App
+

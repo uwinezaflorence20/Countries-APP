@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const [pageInput, setPageInput] = useState('');
 
@@ -46,28 +46,20 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className="px-3 py-1 rounded bg-gray-200 text-gray-700 mr-2"
-      > previous
-        <i className="fas fa-chevron-left"></i>
+      > <FaChevronLeft className="mr-1" />
       </button>
       {renderPageNumbers()}
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className="px-3 py-1 rounded bg-gray-200 text-gray-700 ml-2"
-      > next
-        {/* <i className="fas fa-chevron-right"></i> */}
+      >
+         <FaChevronRight className="ml-1" />
+       
       </button>
-      <input
-        type="number"
-        value={pageInput}
-        onChange={handleInputChange}
-        onKeyPress={handleInputKeyPress}
-        className="px-3 py-1 rounded border border-gray-300 ml-2 w-20 text-center"
-        placeholder="Go to page"
-      />
+      
     </div>
   );
 };
 
 export default Pagination;
-
