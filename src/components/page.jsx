@@ -8,30 +8,35 @@ const MyComponent = () => {
     setCurrentPage(page);
   };
 
+  const pageCount = 6; // Total number of pages
+
   return (
     <div>
-      <div className=" py-4 px-20 flex  md:flex-row justify-between items-center ">
-      <div>
-        <p className="text-2xl">View of contries</p>
-        <p>page 1 of 5</p>
+      <div className="py-4 px-20 flex md:flex-row justify-between items-center">
+        <div>
+          <p className="text-2xl">View of countries</p>
+          <p>Page {currentPage} of {pageCount}</p>
+        </div>
+        <div className="text-xl">
+          <select name="" id="">
+            <option value="">Select continent</option>
+            <option value="africa">Africa</option>
+            <option value="asia">Asia</option>
+            <option value="south-america">South America</option>
+            <option value="north-america">North America</option>
+            <option value="europe">Europe</option>
+            <option value="ocean">Ocean</option>
+            <option value="antarctica">Antarctica</option>
+          </select>
+        </div>
       </div>
-      <div className="text-xl">
-     <select name="" id="">
-      <option value="">select continent</option>
-        <option value="">africa</option>
-        <option value="">asian</option>
-        <option value="">south america</option>
-        <option value="">north america</option>
-        <option value="">european</option>
-        <option value="">ocean</option>
-        <option value="">Antaratica</option>
-        </select>
-        </div>
-        </div>
-      <Pagination currentPage={currentPage} totalPages={5} onPageChange={handlePageChange} />
+      <Pagination currentPage={currentPage} totalPages={pageCount} onPageChange={handlePageChange} />
     </div>
   );
 };
+
+
+
 
 export default MyComponent;
 

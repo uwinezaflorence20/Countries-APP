@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import { FaBars } from 'react-icons/fa';
 
+
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -23,7 +24,7 @@ const searchcountry = async term =>{
           <p>
             <a href="" className="text-3xl text-blue-500 font-bold">
               Logoipsum
-              <i class="fa-solid fa-l"></i>
+            
             </a>
           </p>
         </div>

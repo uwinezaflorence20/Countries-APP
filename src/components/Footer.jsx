@@ -1,9 +1,10 @@
 
 import React from 'react'
 
+
 const Footer = () => {
   return (
-    <div className="pt-32">
+    <div className="pt-20">
     <div className="bg-slate-200 py-4 px-20 flex flex-col md:flex-row justify-between items-center ">
       <div className="md:mb-0 mb-4">
         <p>
