@@ -4,7 +4,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const [pageInput, setPageInput] = useState('');
   const [countryData, setCountryData] = useState([]);
-  const countriesPerPage =9;
+  const countriesPerPage = 50;
 
   useEffect(() => {
     fetch('https://restcountries.com/v3/all')
@@ -52,30 +52,25 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const currentCountries = countryData.slice((currentPage - 1) * countriesPerPage, currentPage * countriesPerPage);
 
   return (
-    <div>
-      <div>
-        <div className="container items-center justify-center place-items-center md:ml-0 lg:ml-20">
-          <div className="">
-            <ul className="flex flex-wrap gap-5 justify-center h-[120px] mx-auto pl-10 place-items-center">
-              {currentCountries.map(country => (
-                <div className="items-center md:w-3/12 lg:w-3/12 justify-center" key={country.name.common}>
-                  <img src={`https://flagcdn.com/${country.cca2.toLowerCase()}.svg`} alt={country.name.common} className="w-[250px] items-center h-[120px]" />
-                  <strong>{country.name.common}</strong>
-                  <p><strong>Capital</strong>: {country.capital}</p>
-                  <p><strong>Population</strong>: {country.population}</p>
-                  <p><strong>Region</strong>: {country.region}</p>
-                </div>
-              ))}
-            </ul>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        {currentCountries.map(country => (
+          <div className="flex flex-col items-center" key={country.name.common}>
+            <img src={`https://flagcdn.com/${country.cca2.toLowerCase()}.svg`} alt={country.name.common} className="w-[250px] h-[120px]" />
+            <strong>{country.name.common}</strong>
+            <p><strong>Capital</strong>: {country.capital}</p>
+            <p><strong>Population</strong>: {country.population}</p>
+            <p><strong>Region</strong>: {country.region}</p>
           </div>
-        </div>
+        ))}
       </div>
-      <div className="flex justify-center items-center pt-96 mt-56">
+      <div className="flex justify-center items-center pt-6">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
           className="px-3 py-1 rounded bg-gray-200 text-gray-700 mr-2"
-        > <FaChevronLeft className="mr-1" />
+        >
+          <FaChevronLeft className="mr-1" />
         </button>
         {renderPageNumbers()}
         <button
@@ -91,6 +86,5 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 };
 
 export default Pagination;
-
 
 

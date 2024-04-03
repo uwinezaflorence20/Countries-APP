@@ -8,17 +8,17 @@ const MyComponent = () => {
     setCurrentPage(page);
   };
 
-  const pageCount = 6; // Total number of pages
+  const pageCount = 5; // Total number of pages
 
   return (
-    <div>
-      <div className="py-4 px-20 flex md:flex-row justify-between items-center">
-        <div>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="py-4 flex flex-col md:flex-row justify-between items-center pt-8">
+        <div className="text-center md:text-left mb-4 md:mb-0">
           <p className="text-2xl">View of countries</p>
           <p>Page {currentPage} of {pageCount}</p>
         </div>
-        <div className="text-xl">
-          <select name="" id="">
+        <div className="text-center md:text-right">
+          <select className="text-xl" name="" id="">
             <option value="">Select continent</option>
             <option value="africa">Africa</option>
             <option value="asia">Asia</option>
@@ -34,9 +34,6 @@ const MyComponent = () => {
     </div>
   );
 };
-
-
-
 
 export default MyComponent;
 
