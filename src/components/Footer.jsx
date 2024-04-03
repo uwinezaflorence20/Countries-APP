@@ -7,7 +7,7 @@ const Footer = () => {
     <div className="pt-20">
     <div className="bg-slate-200 py-4 px-20 flex flex-col md:flex-row justify-between items-center ">
       <div className="md:mb-0 mb-4 flex flex-row">
-        <img src='./src/images/logoipsum-296 (4).svg'/>
+       <img src="./src/images/logoipsum-296.svg" alt="" />
         <p>
           <a href="" className="text-3xl text-blue-500 font-bold">
             Logoipsum

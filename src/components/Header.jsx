@@ -21,7 +21,7 @@ const searchcountry = async term =>{
     <div className="pb-20 pt-16 min-w-screen bg-cover text-white bg-[url('https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274_1280.jpg')]">
       <div className="flex justify-between items-center mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <div className="md:mb-0 mb-4 flex flex-row items-center">
-  <img src='./src/images/logoipsum-296 (4).svg' className="h-8 md:h-auto" alt="Logo" />
+      <img src="./src/images/logoipsum-296.svg" alt="" />
   <p className="md:ml-2">
     <a href="" className="text-3xl text-blue-500 font-bold hidden md:inline-block">
       Logoipsum
