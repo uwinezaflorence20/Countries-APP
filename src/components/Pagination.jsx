@@ -3,14 +3,26 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const [pageInput, setPageInput] = useState('');
+  const [searchInput, setSearchInput] = useState('');
   const [countryData, setCountryData] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
   const countriesPerPage = 50;
 
   useEffect(() => {
     fetch('https://restcountries.com/v3/all')
       .then(response => response.json())
-      .then(data => setCountryData(data));
+      .then(data => {
+        setCountryData(data);
+        setFilteredCountries(data);
+      });
   }, []);
+
+  useEffect(() => {
+    const filtered = countryData.filter(country =>
+      country.name.common.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    setFilteredCountries(filtered);
+  }, [searchInput, countryData]);
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -49,10 +61,20 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     return pages;
   };
 
-  const currentCountries = countryData.slice((currentPage - 1) * countriesPerPage, currentPage * countriesPerPage);
+  const currentCountries = filteredCountries.slice((currentPage - 1) * countriesPerPage, currentPage * countriesPerPage);
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+      <div className="flex justify-center items-center mb-16">
+        <input
+          type="text"
+          placeholder="Search by country name"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          className="px-40 py-2 bg-black border text-white border-gray-300 rounded-md mr-2"
+        />
+       
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         {currentCountries.map(country => (
           <div className="flex flex-col items-center" key={country.name.common}>
@@ -86,5 +108,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 };
 
 export default Pagination;
+
 
 

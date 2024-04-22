@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import { FaBars } from 'react-icons/fa';
 
-
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -39,7 +38,7 @@ const searchcountry = async term =>{
               <a href="#">Countries</a>
             </li>
           </ul>
-        </nav>
+    n    </nav>
       </div>
       <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <h1 className="text-4xl font-bold text-center pb-8 pt-8">Country API App</h1>
@@ -47,14 +46,7 @@ const searchcountry = async term =>{
           This is a simple app that allows you to search for countries and
           continents using the API.
         </p>
-        <div className="flex justify-center pt-12 container mx-auto mb-16"> 
-          <input 
-            type="text"
-            className="w-full lg:px-48 sm:w-auto px-12 py-3  text-black focus:outline-none focus:border-blue-500"
-            placeholder="Search country by name..."
-          onChange={(term) => searchcountry(term.target.value)}
-          />
-        </div>
+        
       </div>
     </div>
   );

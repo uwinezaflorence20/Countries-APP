@@ -3,12 +3,23 @@ import Pagination from './Pagination';
 
 const MyComponent = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedContinent, setSelectedContinent] = useState('');
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
   const pageCount = 5; // Total number of pages
+
+  // Sample countries data structure
+  const countriesByContinent = {
+    africa: ['Country1', 'Country2', 'Country3'],
+    asia: ['Country4', 'Country5', 'Country6'],
+    // Add other continents here...
+  };
+
+  // Function to filter countries based on selected continent
+  const filteredCountries = selectedContinent ? countriesByContinent[selectedContinent] : [];
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,7 +29,7 @@ const MyComponent = () => {
           <p>Page {currentPage} of {pageCount}</p>
         </div>
         <div className="text-center md:text-right">
-          <select className="text-xl" name="" id="">
+          <select className="text-xl" value={selectedContinent} onChange={(e) => setSelectedContinent(e.target.value)}>
             <option value="">Select continent</option>
             <option value="africa">Africa</option>
             <option value="asia">Asia</option>
@@ -30,12 +41,14 @@ const MyComponent = () => {
           </select>
         </div>
       </div>
-      <Pagination currentPage={currentPage} totalPages={pageCount} onPageChange={handlePageChange} />
+      {/* Pass filtered countries to Pagination component */}
+      <Pagination currentPage={currentPage} totalPages={pageCount} onPageChange={handlePageChange} countries={filteredCountries} />
     </div>
   );
 };
 
 export default MyComponent;
+
 
 
 
